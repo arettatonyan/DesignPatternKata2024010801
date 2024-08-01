@@ -15,6 +15,7 @@ namespace KataPattern.Factory
         {
             notificationList = new List<INotification>();
             notificationList.Add(new MailNotification());
+            notificationList.Add(new ReverseMessageNotificationDecorator(new SmsNotification()));
             notificationList.Add(new SmsNotification());
             notificationList.Add(new PushNotification());
         }
