@@ -8,6 +8,6 @@ using KataPattern2.Notifications;
 
 string mesasage = "Kafka Sorunu";
 
-new NotificationFacade(new NotificationFactory()).SendMessage(MessageType.Mail , mesasage);
+new NotificationFacade(new NotificationFactory()).SendMessage(MessageType.SMS , mesasage);
 
 

@@ -12,7 +12,7 @@ namespace KataPattern2.Notifications
         public bool Send(MessageModel message)
         {
             Console.WriteLine("Push: " + message.Message);
-            return true;
+            return false;
         }
     }
 }

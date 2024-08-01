@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace KataPattern2.Notifications
 {
-    internal class SmsNotification : INotification
+    internal class ErrorNotification : INotification
     {
         public bool Send(MessageModel message)
         {
-            Console.WriteLine("SMS: " + message.Message);
-            return false;
+            Console.WriteLine("Not Send: " + message.ToString());
+
+            return true;
         }
     }
 }
