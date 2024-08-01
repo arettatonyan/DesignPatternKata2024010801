@@ -1,4 +1,5 @@
-﻿using KataPattern.Notifications;
+﻿using KataPattern.Factory;
+using KataPattern.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,19 @@ namespace Facade
 {
     internal class NotificationFacade : INotificationFacade
     {
+        private readonly INotificationFactory notificationFactory;
+
+        public NotificationFacade(INotificationFactory notificationFactory)
+        {
+            this.notificationFactory = notificationFactory;
+        }
+
         public void SendMessage(string message)
         {
-            INotification mailNotification = new MailNotification();
-            INotification smsNotification = new SmsNotification();
-            INotification pushNotification = new PushNotification();
-
-            mailNotification.Send(message);
-            smsNotification.Send(message);
-            pushNotification.Send(message);
+            foreach (INotification notification in notificationFactory.GetNotifications())
+            {
+                notification.Send(message);
+            }
         }
     }
 }
