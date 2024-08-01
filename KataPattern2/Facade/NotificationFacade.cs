@@ -1,5 +1,6 @@
-﻿using KataPattern.Factory;
-using KataPattern.Notifications;
+﻿using KataPattern2.Factory;
+using KataPattern2.Model;
+using KataPattern2.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,15 @@ namespace Facade
             this.notificationFactory = notificationFactory;
         }
 
-        public void SendMessage(string message)
+        public void SendMessage(MessageType type, string message)
         {
-            notificationFactory.GetNotifications().Send(message);
+            var model = new MessageModel
+            {
+                Type = type,
+                Message = message
+            };
+
+            notificationFactory.GetNotifications()[type].Send(model);
         }
     }
 }

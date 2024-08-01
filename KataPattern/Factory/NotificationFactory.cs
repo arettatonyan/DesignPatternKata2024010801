@@ -20,9 +20,9 @@ namespace KataPattern.Factory
             notificationList.Add(new MultipleNotificationDecorator( new PushNotification(), 2));
         }
 
-        public IList<INotification> GetNotifications()
+        public CompositeNotification GetNotifications()
         {
-            return notificationList;
+            return new CompositeNotification(notificationList);
         }
     }
 }
