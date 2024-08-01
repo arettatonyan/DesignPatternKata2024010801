@@ -14,10 +14,10 @@ namespace KataPattern.Factory
         public NotificationFactory()
         {
             notificationList = new List<INotification>();
-            notificationList.Add(new MailNotification());
-            notificationList.Add(new ReverseMessageNotificationDecorator(new SmsNotification()));
-            notificationList.Add(new SmsNotification());
-            notificationList.Add(new PushNotification());
+            notificationList.Add(new MultipleNotificationDecorator(new MailNotification(), 2));
+            notificationList.Add(new MultipleNotificationDecorator(new ReverseMessageNotificationDecorator(new SmsNotification()), 3));
+            notificationList.Add(new MultipleNotificationDecorator(new SmsNotification(), 4));
+            notificationList.Add(new MultipleNotificationDecorator( new PushNotification(), 2));
         }
 
         public IList<INotification> GetNotifications()

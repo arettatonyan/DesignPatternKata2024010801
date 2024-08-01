@@ -19,10 +19,8 @@ namespace Facade
 
         public void SendMessage(string message)
         {
-            foreach (INotification notification in notificationFactory.GetNotifications())
-            {
-                notification.Send(message);
-            }
+            var compositeNotification = new CompositeNotification(notificationFactory.GetNotifications());
+            compositeNotification.Send(message);
         }
     }
 }
